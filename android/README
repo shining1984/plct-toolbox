@@ -1,0 +1,10 @@
+本目录目前只有下载Android master分支源码的操作，没有进行构建。
+
+使用过程：
+
+1、在本目录之下，使用命令行：
+docker build -t android:rv64 .
+构建名为android:rv64的image.
+2、构建成功之后，使用命令行：
+docker run -t -i android:rv64 /bin/bash
+可以进入android:rv64的命令行模式，使用命令ls就可以看到名为android的目录，该目录之下即为我们下载的Android master分支源码。
