@@ -1,10 +1,14 @@
-本目录目前只有下载Android master分支源码的操作，没有进行构建。
+本目录目前只有下载Android master分支源码的操作,没有进行构建。
 
 使用过程：
 
-1、在本目录之下，使用命令行：
+1、在本目录之下,使用命令行:
 docker build -t android:rv64 .
 构建名为android:rv64的image.
-2、构建成功之后，使用命令行：
-docker run -t -i android:rv64 /bin/bash
-可以进入android:rv64的命令行模式，使用命令ls就可以看到名为android的目录，该目录之下即为我们下载的Android master分支源码。
+2、构建成功之后,使用命令行启动镜像image:
+docker run -t -i --privileged android:rv64 /bin/bash
+可以进入android:rv64的命令行模式,使用命令ls就可以看到名为android的目录,该目录之下即为我们下载的Android master分支源码。
+添加--privileged,是为了在后续lunch过程中,解决“Build sandboxing disabled due to nsjail error.”这个错误。
+
+构建ART RV过程中需要安装的库： zip wget p7zip-full zstd cloud-utils qemu-system-misc rsync
+docker可以通过“docker container ls”查看容器ID,然后用“docker start 容器ID”来启动已经关闭的容器, “docker exec -it  容器ID /bin/bash” 来启动多个通往同个容器的终端。
