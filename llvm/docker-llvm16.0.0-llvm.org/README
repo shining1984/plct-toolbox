@@ -1,0 +1,8 @@
+See llvm/docs/Docker.rst for details
+
+### shining add
+1、这是从llvm16.0.0源码中llvm/utils/docker目录直接复制过来的，这是官方自带的docker构建文件。
+2、这个目录既包含了debian10和nividia-cuda的具体构建文件，还给了一个便于用户自己修改所可以参考的example。
+3、debian10、example、nvidia-cuda下，都有自己的Dockerfile，这些Dockerfile会调用scripts目录下的脚本去执行具体的下载源码、编译等动作。
+4、build_docker_image脚本可以直接调用debian10目录下的Dockerfile去构建针对debian10的容器，用户也可以不使用这个脚本，直接手动采用Docker的命令去调用想要执行的Dockerfile。
+5、debian10的相关文件，可以直接应用于多种Linux操作系统。
