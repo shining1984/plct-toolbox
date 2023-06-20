@@ -1,0 +1,12 @@
+llvm/docker-llvm16.0.0-llvm.org 是LLVM官方的dockerfile。
+llvm/mydockerfile 是我自己根据LLVM官方的dockerfile简化而来的内容，还有些内容没有进行调试，有待修复。
+
+目前Clang/LLVM的编译是参考文档：https://clang.llvm.org/get_started.html
+1. 安装python、cmake;
+2. git clone -b llvmorg-16.0.0 https://github.com/llvm/llvm-project.git
+3. cd llvm-project
+4. mkdir build
+5. cd build
+6. cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ../llvm
+7. make
+编译之后，生成的可执行文件位于llvm-project/build/bin目录之下。
