@@ -26,3 +26,11 @@ mkdir build
 cd build
 ../configure --target-list=riscv64-softmmu,riscv64-linux-user --prefix=$RISCV/qemu
 ninja
+
+cd ../..
+git clone https://github.com/llvm/llvm-project.git
+cd llvm-porject
+mkdir build
+cd build
+cmake -DLLVM_TARGETS_TO_BUILD="RISCV" -DLLVM_ENABLE_PROJECTS="clang;llvm" -DCMAKE_BUILD_TYPE=Release  -G "Ninja" ../llvm
+ninja
